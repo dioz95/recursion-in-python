@@ -9,12 +9,12 @@ After that day, I decided to dive deeper on the recursive algorithm then found i
   
  ### Case Study: Factorial
 Factorial is one of the common mathematical operation that symbolized with exclamation mark (`!`), that calculates the product of all positive integer less than or equal to `n`. So, `n! = n x (n-1) x (n-2) x (n-3) ... x 1`. Start from this point, you might seen the pattern of this operation so we can start to construct the code using the **recursive case**:
- ```
+ ```python
  def factorial(n):
   return n * factorial(n-1) # recursive case (1)
  ```
  If you run that code, you would find that the function run repeatedly until your system run out of memory. This happens because you have not identify the **stopping criterion**. In the factorial case, we want the recursion stop when `n == 1`, and for `n == 0` the mathematicians agreed that `0! = 1`. Indeed that's quite strange, but we don't try to be smart. Let's just do what they said :)
- ```
+ ```python
  def factorial(n):
   if n in [0,1]: # stopping criterion (2)
     return 1 
@@ -22,7 +22,7 @@ Factorial is one of the common mathematical operation that symbolized with excla
     return n * factorial(n-1) # recursive case (1)
  ```
 That code should perfectly work! But what if the input is negative or float? That's when we need to add a bit of finishing touch to our code. If we insert the negative or float value, the system would return an error notification `The number must be positive or integer only!`,
-```
+```python
  def factorial(n):
   assert n >= 0 and int(n) == n, 'The number must be positive or integer only!' # unintentional case (3)
   if n in [0,1]: # stopping criterion (2)
